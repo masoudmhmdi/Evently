@@ -1,5 +1,5 @@
-using Evently.API.Extension;
-using Evently.Module.Events.API;
+using Evently.Module.Events.Infrastructure;
+using Evently.Module.Events.Infrastructure.Database.Extension;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -20,9 +20,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
-// ReSharper disable once InvokeAsExtensionMethod
-EventsModule.MapEndpoints(app);
+app.MapEventModuleEndpoints();
 
 
 app.Run();

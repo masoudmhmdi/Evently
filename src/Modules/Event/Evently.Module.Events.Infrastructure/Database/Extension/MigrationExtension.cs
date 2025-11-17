@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Evently.Module.Events.Infrastructure.Database.Extension;
 
-internal static class MigrationExtension
+public static class MigrationExtension
 {
 
     public static void ApplyMigrations(this IApplicationBuilder app)

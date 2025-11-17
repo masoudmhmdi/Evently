@@ -31,7 +31,7 @@ public static class Extension
     }
 
 
-    public static void MapEndpoints(this IEndpointRouteBuilder endpoints)
+    public static void MapEventModuleEndpoints(this IEndpointRouteBuilder endpoints)
     {
         EventEndpoints.MapEndpoints(endpoints);
         
