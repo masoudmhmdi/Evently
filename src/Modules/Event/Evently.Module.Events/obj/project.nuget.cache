@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "h3gkEs1nb24=",
+  "dgSpecHash": "OZpQw3cwi2k=",
   "success": true,
   "projectFilePath": "/home/masoud/CE/Projects/Evently/src/Modules/Event/Evently.Module.Events/Evently.Module.Events.API.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/masoud/.nuget/packages/sonaranalyzer.csharp/9.24.0.89429/sonaranalyzer.csharp.9.24.0.89429.nupkg.sha512"
+  ],
   "logs": []
 }
