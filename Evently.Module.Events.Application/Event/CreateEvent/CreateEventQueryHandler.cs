@@ -21,15 +21,13 @@ public class CreateEventQueryHandler : IRequestHandler<CreateEventQuery, Guid>
             request.Title,
             request.Description,
             request.Location,
-            request.StartAtUtc,
-            request.EndAtUtc
+            request.StartAtUtc.ToUniversalTime(),
+            request.EndAtUtc.ToUniversalTime()
         );
 
          _eventRepository.Insert(@event);
          
-         await _unitOfWork.SaveChangeAsync();
-             
-         
+         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
          return @event.Id;
 

@@ -2,6 +2,5 @@ namespace Evently.Module.Events.Application.Abstractions;
 
 public interface IUnitOfWork
 {
-
-    Task SaveChangeAsync();
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

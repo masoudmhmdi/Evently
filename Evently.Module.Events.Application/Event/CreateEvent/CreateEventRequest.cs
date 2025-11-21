@@ -1,6 +1,6 @@
 namespace Evently.Module.Events.Application.Event.CreateEvent;
 
-public sealed record CreateEventRequest
+public record CreateEventRequest
 {
     public string Title { get; set; }
     public string Description { get; set; }

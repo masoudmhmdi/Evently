@@ -1,4 +1,8 @@
+using Evently.Module.Events.Application.Abstractions;
+using Evently.Module.Events.Application.Event.CreateEvent;
+using Evently.Module.Events.Domain.Event;
 using Evently.Module.Events.Infrastructure.Database;
+using Evently.Module.Events.Infrastructure.Repositories;
 using Evently.Module.Events.Presentation;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +31,18 @@ public static class Extension
             option.UseSnakeCaseNamingConvention();
         });
 
+
+        services.AddMediatR(option =>
+        {
+            option.RegisterServicesFromAssembly(typeof(CreateEventQuery).Assembly);
+        });
+
+        services.AddScoped<IEventRepository, EventRepository>();
+
+        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<EventsDbContext>());
+
         return services;
+        
     }
 
 
