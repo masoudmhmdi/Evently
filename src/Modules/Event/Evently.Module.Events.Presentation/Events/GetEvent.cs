@@ -1,3 +1,5 @@
+using Evently.Module.Events.Application.Event.GetEvent;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
@@ -9,18 +11,15 @@ internal static class GetEvent
 
     public static void MapEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("events/{id}", (Guid id) =>
+        endpoints.MapGet("events/{id}", async (Guid id, ISender sender) =>
         {
-            return Results.Ok(Task.FromResult("ok"));
+            var request = new GetEventRequest()
+            {
+                Id = id
+            };
+            
+            GetEventResponse result = await sender.Send(request);
+            return Results.Ok(result);
         });
     }
-    
-    internal sealed record Event(
-        Guid Id, 
-        string Title, 
-        string Description, 
-        string Location, 
-        DateTime StartAtUtc, 
-        DateTime EndAtUtc 
-    );
 }
